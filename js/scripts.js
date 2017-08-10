@@ -1,19 +1,19 @@
-//back-end logic:
+// back-end logic:
 
-var add = function(number1, number2) {
+function add(number1, number2) {
   return number1 + number2;
 };
 
-var subtract = function(number1, number2) {
+function subtract(number1, number2) {
   return number1 - number2;
 };
 
-var multiply = function(number1, number2) {
+function multiply(number1, number2) {
   return number1 * number2;
 };
 
-var divide = function(number1, number2) {
-  return number1 / number2;
+function divide(number1, number2) {
+return number1 / number2;
 };
 
 // User inter logic:
@@ -21,27 +21,24 @@ var divide = function(number1, number2) {
 $(document).ready(function() {
   $("form#math").submit(function(event) {
     event.preventDefault();
-    var result = 0;
     var number1 = parseInt($("#add1").val());
     var number2 = parseInt($("#add2").val());
+    var operator = $("input:radio[name=operator]:checked").val();
+    var result;
 
-    $("#b1").click(function(event) {
+
+    if (operator === "add") {
       result = add(number1, number2);
-      $("#output").text(result);
-      alert(result);
-    })
-    $("#b2").click(function(event) {
+    } else if (operator === "subtract") {
       result = subtract(number1, number2);
-      $("#output").text(result);
-    })
-    $("#b3").click(function(event) {
+    } else if (operator === "multiply") {
       result = multiply(number1, number2);
-      $("#output").text(result);
-    })
-    $("#b4").click(function(event) {
+    } else if (operator === "divide") {
       result = divide(number1, number2);
-      $("#output").text(result);
-    })
+    }
+
+    $("#output").text(result);
+
 
 
   });
